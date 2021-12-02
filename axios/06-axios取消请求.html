@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./axios.js"></script>
+  </head>
+
+  <body>
+    <button>请求</button>
+    <button>取消</button>
+
+    <script>
+      const btns = document.querySelectorAll("button")
+
+      const baseURL = "http://poetry.apiopen.top"
+      const request = axios.create({
+        baseURL
+      })
+
+      const CancelToken = axios.CancelToken
+      let cancel = null
+
+      btns[0].addEventListener("click", () => {
+        // 上次请求还没出结果 取消请求
+        if (cancel !== null) {
+          cancel("取消")
+        }
+        request
+          .get("/getTime", {
+            cancelToken: new CancelToken(function executor(c) {
+              // executor 函数接收一个 cancel 函数作为参数
+              cancel = c
+            })
+          })
+          .then(res => {
+            console.log(res)
+            cancel = null
+          })
+      })
+
+      btns[1].addEventListener("click", () => {
+        cancel("取消")
+      })
+    </script>
+  </body>
+</html>

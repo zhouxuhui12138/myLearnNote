@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const person = {
+        name: "张三",
+        age: 19
+      }
+
+      // vue2响应式
+      //#region
+      // let p = {}
+      // Object.defineProperty(p, "name", {
+      //   get() {
+      //     return person.name
+      //   },
+      //   set(val) {
+      //     console.log("有人修改属性")
+      //     person.name = val
+      //   }
+      // })
+      // Object.defineProperty(p, "age", {
+      //   get() {
+      //     return person.age
+      //   },
+      //   set(val) {
+      //     console.log("有人修改属性")
+      //     person.age = val
+      //   }
+      // })
+      //#endregion
+
+      // vue3响应式
+      const p = new Proxy(person, {
+        get(target, propName) {
+          console.log(`有人读取了${propName}`)
+          return Reflect.get(target, propName)
+        },
+        set(target, propName, val) {
+          console.log(`有人修改了${propName}`)
+          person[propName] = val
+          return Reflect.set(target, propName, val)
+        },
+        deleteProperty(target, propName) {
+          console.log(`有人删除了${propName}`)
+          return Reflect.deleteProperty(target, propName)
+        }
+      })
+    </script>
+  </body>
+</html>

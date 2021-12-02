@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./echarts.js"></script>
+</head>
+
+<body>
+  <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+  <div id="main" style="width: 600px;height:400px;"></div>
+
+  <script>
+    const myChart = echarts.init(document.getElementById('main'))
+
+    const option = {
+      series: [
+        {
+          type: 'pie',
+          data: [
+            {
+              value: 0,
+              name: '直接访问'
+            },
+            {
+              value: 0,
+              name: '联盟广告'
+            },
+            {
+              value: 0,
+              name: '搜索引擎'
+            }
+          ]
+        }
+      ]
+    };
+
+    myChart.setOption(option)
+  </script>
+</body>
+
+</html>
