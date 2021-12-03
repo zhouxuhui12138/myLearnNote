@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .title {
+        color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+      const myId = "demo"
+      const myData = "hello React"
+
+      const vm = (
+        <div>
+          <h1 className="title" id="{ myId }">
+            <span style={{ fontSize: "20px" }}>{myData}</span>
+          </h1>
+          <input type="text" />
+        </div>
+      )
+
+      ReactDOM.render(vm, document.getElementById("app"))
+
+      /*
+        1. 定义虚拟dom 不要使用引号
+        2. 在标签中混入js时 需使用{}
+        3. 样式的类名改为className
+        4. 写内联样式要这样写 并且使用小驼峰格式 style={{ fontSize: '20px' }}
+        5. 只能有一个根标签
+        6. 标签必须闭合
+        7. 如果标签为小写 会转为对应的html标签 如果为大写 React会把他当成一个组件
+      */
+    </script>
+  </body>
+</html>
