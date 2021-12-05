@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+      class Weather extends React.Component {
+        constructor(props) {
+          super(props)
+          // 初始化状态
+          this.state = {
+            isHot: true
+          }
+          // 通过bind改变onClick回调的this指向
+          this.changeWeather = this.changeWeather.bind(this)
+        }
+
+        render() {
+          return (
+            <h1 onClick={this.changeWeather}>
+              今天天气很{this.state.isHot ? "炎热" : "凉爽"}
+            </h1>
+          )
+        }
+
+        changeWeather() {
+          // 由于changeWeather是作为onClick的回调,不是通过Weather实例调用的
+          // 直接调用this应该为window,又因为class里面默认开启了严格模式,所以此时this指向undefined
+          // 在react中 直接改变state的值会丢失响应式 需要用到setState
+          this.setState({
+            isHot: !this.state.isHot
+          })
+        }
+      }
+
+      ReactDOM.render(<Weather />, document.getElementById("app"))
+    </script>
+  </body>
+</html>
