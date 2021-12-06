@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+      </head>
+      <body>
+        <div id="app"></div>
+
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.min.js"></script>
+
+        <script type="text/babel">
+          class Demo extends React.Component {
+            submit = (e) => {
+              e.preventDefault() // 阻止默认行为
+              console.log(`用户名${this.input1.value}，密码${this.input2.value}`)
+            }
+
+            render() {
+              return (
+                <form onSubmit={this.submit}>
+                  用户名：<input ref={c => this.input1 = c} type="text" />
+                  密码：<input ref={c => this.input2 = c} type="password" />
+                  <br />
+                  <button>登录</button>
+                </form>
+              )
+            }
+          }
+
+          ReactDOM.render(<Demo />, document.getElementById("app"))
+        </script>
+      </body>
+    </html>
+  </body>
+</html>
