@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+      </head>
+      <body>
+        <div id="app"></div>
+
+        <script src="../js/react.development.js"></script>
+        <script src="../js/react-dom.development.js"></script>
+        <script src="../js/babel.min.js"></script>
+
+        <script type="text/babel">
+          class Demo extends React.Component {
+            // 最先调用
+            constructor(props) {
+              super(props)
+              console.log("constructor")
+              this.state = { count: 0 }
+            }
+
+            add = () => {
+              this.setState({
+                count: (this.state.count += 1)
+              })
+            }
+
+            delect = () => {
+              ReactDOM.unmountComponentAtNode(document.getElementById("app"))
+            }
+
+            force = () => {
+              this.forceUpdate()
+            }
+
+            // 组件将要挂载
+            componentWillMount() {
+              console.log("componentWillMount")
+            }
+
+            // 组件已经挂载
+            componentDidMount() {
+              console.log("componentDidMount")
+            }
+
+            // 组件将要被卸载
+            componentWillUnmount() {
+              console.log('componentWillUnmount')
+            }
+
+            // 组件是否允许被更新
+            shouldComponentUpdate() {
+              // 不写这个函数默认返回为 true 页面允许更新 写这个函数要手动返回一下
+              console.log('shouldComponentUpdata')
+              return true
+            }
+
+            // 组件更新前
+            componentWillUpdate() {
+              console.log('componentWillUpdate')
+            }
+
+            // 组件更新后
+            componentDidUpdate() {
+              console.log('componentDidUpdate')
+            }
+
+            // 渲染页面 更新页面
+            render() {
+              console.log("render")
+              return (
+                <div>
+                  <h2>{this.state.count}</h2>
+                  <button onClick={this.add}>加1</button> 
+                  <button onClick={this.delect}>卸载</button>
+                  <button onClick={this.force}>强制更新</button>
+                </div>
+              )
+            }
+          }
+
+          ReactDOM.render(<Demo />, document.getElementById("app"))
+        </script>
+      </body>
+    </html>
+  </body>
+</html>
