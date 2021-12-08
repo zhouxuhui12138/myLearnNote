@@ -18,11 +18,12 @@
       <body>
         <div id="app"></div>
 
-        <script src="../js/react.development.js"></script>
-        <script src="../js/react-dom.development.js"></script>
-        <script src="../js/babel.min.js"></script>
+        <script src="../new-js/react.development.js"></script>
+        <script src="../new-js/react-dom.development.js"></script>
+        <script src="../new-js/babel.min.js"></script>
 
         <script type="text/babel">
+          // 新的生命周期将要废除三个钩子 增加了两个 不过都不太常用
           class Father extends React.Component {
             state = {
               car: '奔驰'
@@ -70,7 +71,7 @@
             }
 
             // 组件将要挂载
-            componentWillMount() {
+            UNSAFE_componentWillMount() {
               console.log("componentWillMount")
             }
 
@@ -92,7 +93,7 @@
             }
 
             // 组件更新前
-            componentWillUpdate() {
+            UNSAFE_componentWillUpdate() {
               console.log("componentWillUpdate")
             }
 
@@ -102,7 +103,7 @@
             }
 
             // 子组件将要接受到父组件传过来的参数(第一次不算 以后接到新的才调用)
-            componentWillReceiveProps(props) {
+            UNSAFE_componentWillReceiveProps(props) {
               console.log('componentWillReciveProps', props)
             }
 
