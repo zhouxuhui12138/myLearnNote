@@ -42,6 +42,20 @@ export default class app extends Component {
     this.setState({ todos })
   }
 
+  handleAllCheck = (done) => {
+    let { todos } = this.state
+    todos = todos.map(item => {
+      return {...item, done}
+    })
+    this.setState({ todos })
+  }
+
+  delectDoneTodo = () => {
+    let { todos } = this.state
+    todos = todos.filter(item => item.done === false)
+    this.setState({ todos })
+  }
+
   render() {
     const { todos } = this.state
     return (
@@ -54,7 +68,7 @@ export default class app extends Component {
               updateTodo={this.updateTodo}
               delectTodo={this.delectTodo}
             />
-            <Footer />
+            <Footer todos={todos} handleAllCheck={this.handleAllCheck} delectDoneTodo={this.delectDoneTodo} />
           </div>
         </div>
       </div>
