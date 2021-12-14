@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-import { Link, Route, Routes } from "react-router-dom"
+import { Route, Routes, Navigate } from "react-router-dom"
+import MyNavLink from "./components/MyNavLink"
 import About from "./pages/About"
 import Home from "./pages/Home"
 
@@ -17,20 +18,21 @@ export default class App extends Component {
         <div className="row">
           <div className="col-xs-2 col-xs-offset-2">
             <div className="list-group">
-              <Link className="list-group-item" to="/about">
-                abuot
-              </Link>
-              <Link className="list-group-item" to="/home">
-                home
-              </Link>
+              {/* 路由跳转 */}
+              <MyNavLink to="/home">home</MyNavLink>
+              <MyNavLink to="/about">about</MyNavLink>
             </div>
           </div>
           <div className="col-xs-6">
             <div className="panel">
               <div className="panel-body">
+                {/* 注册路由 */}
                 <Routes>
                   <Route path="/about" element={<About />} />
-                  <Route path="/home" element={<Home />} />
+                  {/* router 路由嵌套V6写法 */}
+                  <Route path="/home/*" element={<Home />} />
+                  {/* 重定向 */}
+                  <Route index element={<Navigate to="/about" />} />
                 </Routes>
               </div>
             </div>
