@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    // 打包ts的目录
+    "outDir": "./js",
+    // 是否使用es6
+    "target": "es6"
+  }
+}
