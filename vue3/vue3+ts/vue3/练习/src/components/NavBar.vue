@@ -18,8 +18,9 @@
 </template>
 
 <script lang="ts" setup>
-import { PropType, nextTick } from 'vue'
-import Dropdown from './Dropdown.vue';
+import { PropType } from 'vue'
+import Dropdown from './Dropdown.vue'
+
 export interface IUserProps {
   isLogin: boolean
   name?: string

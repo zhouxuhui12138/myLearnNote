@@ -37,7 +37,7 @@ const list: IColumnProps[] = [
 ]
 
 const userInfo: IUserProps = reactive({
-  isLogin: false,
+  isLogin: true,
   name: 'xiaozhou'
 })
 
