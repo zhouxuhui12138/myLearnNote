@@ -1,0 +1,34 @@
+<view class="song-detail">
+  <view class="author">{{musicDetail.ar[0].name}}</view>
+  <!-- 底座 -->
+  <view class="circle"></view>
+  <!-- 摇杆 -->
+  <image src="/static/images/song/needle.png" class="needle {{isPlay && 'needle-rotate'}}" />
+  <!-- 磁盘 -->
+  <view class="disc-warp {{isPlay && 'disc-animation'}}">
+    <image src="/static/images/song/disc.png" class="disc" />
+    <image src="{{musicDetail.al.picUrl}}" class="music-img" />
+  </view>
+
+  <!-- 进度条 -->
+  <view class="progress-content">
+    <text>{{currentTime}}</text>
+    <view class="progress">
+      <!-- 实时进度条 -->
+      <view class="current-time" style="width: {{currentWidth + 'rpx'}}">
+        <!-- 小圆球 -->
+        <view class="current-time-round"></view>
+      </view>
+    </view>
+    <text>{{allTime}}</text>
+  </view>
+
+  <!-- 歌曲播放控制 -->
+  <view class="music-control">
+    <text class="iconfont icon-random"></text>
+    <text class="iconfont icon-diyigeshipin" bindtap="changeMusic" id="pre"></text>
+    <text class="iconfont {{isPlay ? 'icon-zanting' : 'icon-kaishi'}} big" bindtap="play"></text>
+    <text class="iconfont icon-zuihouyigeshipin" bindtap="changeMusic" id="next"></text>
+    <text class="iconfont icon-liebiao"></text>
+  </view>
+</view>

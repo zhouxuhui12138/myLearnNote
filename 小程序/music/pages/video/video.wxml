@@ -1,0 +1,43 @@
+<view class="video">
+  <!-- 头部 -->
+  <view class="header">
+    <image src="/static/images/video/video.jpg" />
+    <view class="search">搜索歌曲</view>
+    <image src="/static/images/logo.png" />
+  </view>
+
+  <!-- 导航栏区域 -->
+  <scroll-view scroll-x enable-flex class="nav-scroll">
+    <view class="nav-item" wx:for="{{navList}}" wx:key="id" bindtap="changeNav" id="{{item.id}}">
+      <view class="item-content {{navId == item.id ? 'active' : ''}}">
+        {{item.name}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 视频区域 -->
+  <scroll-view
+    scroll-y
+    class="scroll-video"
+    refresher-enabled
+    refresher-triggered="{{isRefresher}}"
+    bindrefresherrefresh="onRefresher"
+    bindscrolltolower="onTolower"
+  >
+    <view class="video-item" wx:for="{{videoList}}" wx:key="index">
+      <video
+        src="{{item.data.urlInfo.url}}"
+        bindplay="onPlay"
+        bindtimeupdate="onTimeUpdate"
+        bindended="onEnd"
+        id="{{item.data.vid}}"
+        poster="{{item.data.coverUrl}}"
+        wx:if="{{videoId === item.data.vid}}"
+        autoplay="{{true}}"
+        object-fit="cover"
+      />
+      <image src="{{item.data.coverUrl}}" wx:else bindtap="onPlay" id="{{item.data.vid}}" />
+      <text class="content">{{item.data.title}}</text>
+    </view>
+  </scroll-view>
+</view>
