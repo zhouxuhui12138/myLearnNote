@@ -1,0 +1,47 @@
+.swiper-3d {
+  position: relative;
+  width: 1000px;
+  height: 500px;
+  margin: 100px auto;
+}
+
+.swiper-item {
+  position: absolute;
+  box-shadow: 10px 20px 10px #ccc;
+  transition: all .6s;
+}
+
+.swiper-item img {
+  display: block;
+  width: 100%;
+}
+
+.frist {
+  top: 80px;
+  left: 200px;
+  width: 600px;
+  z-index: 999;
+}
+
+.second {
+  top: 138px;
+  width: 400px;
+  opacity: .6;
+  z-index: 888;
+}
+
+.last {
+  top: 50px;
+  left: 350px;
+  width: 300px;
+  opacity: .4;
+  z-index: 777;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  left: 600px;
+}
