@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+
+  <script>
+    const div = document.querySelector('div')
+    let startX = 0
+    let startY = 0
+    let x = 0
+    let y = 0
+
+    div.addEventListener('touchstart', (e) => {
+      // 获取原坐标
+      startX = e.targetTouches[0].pageX
+      startY =  e.targetTouches[0].pageY
+      x = div.offsetLeft
+      y = div.offsetTop
+    })
+
+    div.addEventListener('touchmove', (e) => {
+      // 获取移动的坐标
+      const moveX = e.targetTouches[0].pageX - startX
+      const moveY = e.targetTouches[0].pageY - startY
+      div.style.left  = moveX + x + 'px'
+      div.style.top = moveY + y + 'px'
+      // 阻止页面拖动
+      e.preventDefault()
+    })
+  </script>
+</body>
+</html>
