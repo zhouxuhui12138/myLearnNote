@@ -5,8 +5,45 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: start;
+      height: 400px;
+      align-items: flex-start;
+      align-content: stretch;
+    }
+
+    .flex-item {
+      width: 200px;
+      height: 80px;
+      text-align: center;
+      line-height: 80px;
+      margin: 10px 10px;
+      background-color: skyblue;
+    }
+
+    .flex-item:nth-child(2) {
+      order: -1;
+      background-color: red;
+      flex: 30%;
+    }
+  </style>
 </head>
 <body>
-  
+  <div class="container">
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>
+    <div class="flex-item">4</div>
+    <div class="flex-item">5</div>
+  </div>
 </body>
 </html>
