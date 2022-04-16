@@ -22,16 +22,16 @@
 // obj.getData()
 
 // 使用箭头函数
-// var obj = {
-//   data: [],
-//   getData() {
-//     setTimeout(() => {
-//       // 此时this为obj 因为箭头函数没有this也不会绑定this 距离他最近的this就是obj
-//       var res = [1, 3, 555]
-//       this.data = res
-//       console.log(obj.data)
-//     }, 2000)
-//   },
-// }
+var obj = {
+  data: [],
+  getData() {
+    setTimeout(() => {
+      // 此时this为obj 因为箭头函数没有this也不会绑定this 距离他最近拥有this的父元素就是obj
+      var res = [1, 3, 555]
+      this.data = res
+      console.log(obj.data)
+    }, 2000)
+  },
+}
 
-// obj.getData()
+obj.getData()
