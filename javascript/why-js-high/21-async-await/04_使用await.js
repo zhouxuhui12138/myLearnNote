@@ -7,7 +7,11 @@ function requestData() {
 }
 
 async function foo() {
-  const res = await requestData()
-  console.log(123)
+  await requestData()
+
+  // 后续代码会等到await执行完毕后执行
+  console.log(111)
+  console.log(222)
+  console.log(333)
 }
 foo()
