@@ -9,9 +9,9 @@ function requestData() {
 async function foo() {
   await requestData()
 
-  // 后续代码会等到await执行完毕后执行
-  console.log(111)
+  // 上面的await执行完成后才会执行如下代码
   console.log(222)
-  console.log(333)
+  console.log(315)
+  console.log(123)
 }
 foo()
