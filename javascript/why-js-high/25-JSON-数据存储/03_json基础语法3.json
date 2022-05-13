@@ -1,0 +1,9 @@
+[
+  123,
+  false,
+  null,
+  "json没有注释",
+  {
+    "name": "xiaozhou"
+  }
+]
