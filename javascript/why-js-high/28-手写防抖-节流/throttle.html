@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+
+    <script src="./02_throttle.js"></script>
+    <script>
+      const input = document.querySelector("input")
+
+      let count = 0
+      const handleInput = function (event) {
+        count++
+        console.log(`第${count}发送网络请求`, this, event)
+      }
+
+      input.addEventListener("input", throttle(handleInput, 2000))
+    </script>
+  </body>
+</html>
