@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="get">get</button>
+    <button class="post">post</button>
+
+    <script>
+      const getBtn = document.querySelector(".get")
+      const postBtn = document.querySelector(".post")
+
+      getBtn.addEventListener("click", () => {
+        fetch("http://127.0.0.1:3000/api/user").then(res => {
+          console.log(res)
+        })
+      })
+
+      postBtn.addEventListener("click", () => {
+        const obj = { name: "xz", age: 18 }
+        const body = JSON.stringify(obj)
+        fetch("http://127.0.0.1:3000/api/login", { method: "post", body }).then(res => {
+          console.log(res)
+        })
+      })
+    </script>
+  </body>
+</html>
