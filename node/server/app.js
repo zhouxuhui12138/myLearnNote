@@ -1,9 +1,12 @@
 const express = require("express")
 const cors = require("cors")
 const joi = require("joi")
-const userRouter = require("./router/user")
 const { expressjwt } = require("express-jwt")
 const { jwtSecretKey } = require("./config")
+
+const userRouter = require("./router/user")
+const userInfoRouter = require('./router/user_info')
+
 
 const app = express()
 
@@ -24,6 +27,7 @@ app.use(express.json())
 app.use(expressjwt({ secret: jwtSecretKey, algorithms: ["HS256"] }).unless({ path: [/^\/api\//] }))
 
 app.use("/api", userRouter)
+app.use('/my', userInfoRouter)
 
 app.use((err, req, res, next) => {
   // token过期或者无效
